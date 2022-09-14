@@ -1,4 +1,5 @@
 <%@ page import="ua.foxminded.dynamicweb.DatabaseFacade"%>
+<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -25,13 +26,12 @@
 		<input type="submit" name="submit" value="Remove"><br>
 		<br>
 	</form>
-
+	
 	<%
-	for (String name : DatabaseFacade.getBooks())
-	{
-		out.print(name + "<br/>");
-	}
+		List<String> nameBooks = (List<String>)request.getAttribute("nameBooks");
+		for(String nameBook : nameBooks)
+			out.println(nameBook + "<br>");
 	%>
-
+	
 </body>
 </html>
