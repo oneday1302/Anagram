@@ -1,7 +1,6 @@
-<%@ page import="ua.foxminded.dynamicweb.DatabaseFacade"%>
-<%@ page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<h1>List of books</h1>
 
 	<form action="MyServlet" method="POST">
@@ -27,11 +27,10 @@
 		<br>
 	</form>
 	
-	<%
-		List<String> nameBooks = (List<String>)request.getAttribute("nameBooks");
-		for(String nameBook : nameBooks)
-			out.println(nameBook + "<br>");
-	%>
+	<c:forEach var="nameBooks" items="${nameBooks}">
+		<c:out value="${nameBooks}"/>
+		<br>
+	</c:forEach>
 	
 </body>
 </html>
