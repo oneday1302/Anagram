@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MyServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -22,16 +22,16 @@ public class MyServlet extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		if(req.getParameter("command").equals("addBook")) 
+		if (req.getParameter("command").equals("addBook"))
 		{
 			String bookName = req.getParameter("nameBook");
-			if(bookName != null)
+			if (bookName != null)
 				DatabaseFacade.addBook(bookName);
 		}
-		if(req.getParameter("command").equals("removeBook"))
+		if (req.getParameter("command").equals("removeBook"))
 		{
 			String bookName = req.getParameter("nameBook");
-			if(bookName != null)
+			if (bookName != null)
 				DatabaseFacade.removeBook(bookName);
 		}
 	}
