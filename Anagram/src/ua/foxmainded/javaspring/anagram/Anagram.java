@@ -2,7 +2,7 @@ package ua.foxmainded.javaspring.anagram;
 
 public class Anagram
 {
-	public static String reverse(String word)
+	public static String reverseWord(String word)
 	{
 		String reverseWord = new StringBuilder(word.replaceAll("[^A-Za-z]+", "")).reverse().toString();
 		StringBuffer reverseWordBuffer = new StringBuffer(reverseWord);
@@ -17,5 +17,19 @@ public class Anagram
 		}
 		reverseWord = reverseWordBuffer.toString();
 		return reverseWord;
+	}
+
+	public static String reverseString(String string)
+	{
+		String[] inputWords = string.split(" ");
+		String[] outputWords = new String[inputWords.length];
+
+		int i = 0;
+		for (String inputWord : inputWords)
+		{
+			outputWords[i] = reverseWord(inputWord);
+			i++;
+		}
+		return String.join(" ", outputWords);
 	}
 }

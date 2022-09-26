@@ -7,11 +7,11 @@ public class AnagramApp
 	public static void main(String[] args)
 	{
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter the word: ");
-		String word = scanner.nextLine();
+		System.out.print("Enter the string: ");
+		String string = scanner.nextLine();
 		scanner.close();
 
-		System.out.print("reverse word: ");
-		System.out.print(Anagram.reverse(word));
+		System.out.print("Reverse string: ");
+		System.out.print(Anagram.reverseString(string));
 	}
 }
