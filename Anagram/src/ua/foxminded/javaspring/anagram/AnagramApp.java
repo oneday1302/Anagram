@@ -1,4 +1,4 @@
-package ua.foxmainded.javaspring.anagram;
+package ua.foxminded.javaspring.anagram;
 
 import java.util.Scanner;
 
