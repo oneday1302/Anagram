@@ -2,10 +2,8 @@ package ua.foxminded.javaspring.anagram;
 
 import java.util.Scanner;
 
-public class AnagramApp
-{
-	public static void main(String[] args)
-	{
+public class AnagramApp {
+	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Enter the string: ");
 		String string = scanner.nextLine();
