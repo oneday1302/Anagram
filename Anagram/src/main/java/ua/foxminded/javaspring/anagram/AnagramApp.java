@@ -9,7 +9,9 @@ public class AnagramApp {
         String string = scanner.nextLine();
         scanner.close();
 
+        ReverseString reverseString = new ReverseString(new ReverseOnlyLetters());
+
         System.out.print("Reverse string: ");
-        System.out.print(Anagram.reverseString(string));
+        System.out.print(reverseString.reverse(string));
     }
 }
