@@ -12,6 +12,6 @@ public class AnagramApp {
         ReverseString reverseString = new ReverseString(new ReverseOnlyLetters());
 
         System.out.print("Reverse string: ");
-        System.out.print(reverseString.reverse(string));
+        System.out.println(reverseString.reverse(string));
     }
 }
