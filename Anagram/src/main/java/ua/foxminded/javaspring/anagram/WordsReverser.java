@@ -2,17 +2,18 @@ package ua.foxminded.javaspring.anagram;
 
 import java.util.StringJoiner;
 
-public class ReverseString {
+public class WordsReverser implements Reverser {
 
-    private Reverse reverse;
+    private Reverser reverse;
 
-    public ReverseString(Reverse reverse) {
+    public WordsReverser(Reverser reverse) {
         this.reverse = reverse;
     }
 
-    public String reverse(String string) {
+    @Override
+    public String reverse(String value) {
         StringJoiner outputString = new StringJoiner(" ");
-        for (String word : string.split(" ")) {
+        for (String word : value.split(" ")) {
             outputString.add(reverse.reverse(word));
         }
         return outputString.toString();
