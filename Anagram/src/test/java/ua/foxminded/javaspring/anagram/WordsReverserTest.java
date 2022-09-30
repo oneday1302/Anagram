@@ -7,65 +7,67 @@ import org.mockito.Mockito;
 
 class WordsReverserTest {
 
-    Reverser rev = Mockito.mock(Reverser.class);
+    Reverser mockReverser = Mockito.mock(Reverser.class);
+    WordsReverser wordsReverser = new WordsReverser(mockReverser);
 
     @Test
     void reverse_shouldReturnNull_whenInputNull() {
-        when(rev.reverse(null)).thenReturn(null);
-        assertEquals(null, rev.reverse(null));
+        when(mockReverser.reverse(null)).thenReturn(null);
+        assertEquals(null, wordsReverser.reverse(null));
     }
 
     @Test
     void reverse_shouldReturnEmptyString_whenInputEmptyString() {
-        when(rev.reverse("")).thenReturn("");
-        assertEquals("", rev.reverse(""));
+        when(mockReverser.reverse("")).thenReturn("");
+        assertEquals("", wordsReverser.reverse(""));
     }
 
     @Test
     void reverse_shouldReturnSingleSpace_whenInputSingleSpace() {
-        when(rev.reverse(" ")).thenReturn(" ");
-        assertEquals(" ", rev.reverse(" "));
+        when(mockReverser.reverse(" ")).thenReturn(" ");
+        assertEquals(" ", wordsReverser.reverse(" "));
     }
 
     @Test
     void reverse_shouldReturnSameSpaces_whenInputSeveralSpaces() {
-        when(rev.reverse("   ")).thenReturn("   ");
-        assertEquals("   ", rev.reverse("   "));
+        when(mockReverser.reverse("   ")).thenReturn("   ");
+        assertEquals("   ", wordsReverser.reverse("   "));
     }
 
     @Test
     void reverse_shouldReturnSameSingleCharacter_whenInputSingleCharacter() {
-        when(rev.reverse("a")).thenReturn("a");
-        assertEquals("a", rev.reverse("a"));
+        when(mockReverser.reverse("a")).thenReturn("a");
+        assertEquals("a", wordsReverser.reverse("a"));
     }
 
     @Test
     void reverse_shouldReturnSameLetter_whenInputSameLetter() {
-        when(rev.reverse("aaa")).thenReturn("aaa");
-        assertEquals("aaa", rev.reverse("aaa"));
+        when(mockReverser.reverse("aaa")).thenReturn("aaa");
+        assertEquals("aaa", wordsReverser.reverse("aaa"));
     }
 
     @Test
     void reverse_shouldReturnReversedSameCharacterInLowerAndUpperCases_whenInputSameCharacterInLowerAndUpperCases() {
-        when(rev.reverse("aA")).thenReturn("Aa");
-        assertEquals("Aa", rev.reverse("aA"));
+        when(mockReverser.reverse("aA")).thenReturn("Aa");
+        assertEquals("Aa", wordsReverser.reverse("aA"));
     }
 
     @Test
     void reverse_shouldReturnReversedDifferentLetters_whenInputDifferentLetters() {
-        when(rev.reverse("abcd")).thenReturn("dcba");
-        assertEquals("dcba", rev.reverse("abcd"));
+        when(mockReverser.reverse("abcd")).thenReturn("dcba");
+        assertEquals("dcba", wordsReverser.reverse("abcd"));
     }
 
     @Test
     void reverse_shouldReturnSameOnlySymbols_whenInputOnlySymbols() {
-        when(rev.reverse("!")).thenReturn("!");
-        assertEquals("!", rev.reverse("!"));
+        when(mockReverser.reverse("!")).thenReturn("!");
+        assertEquals("!", wordsReverser.reverse("!"));
     }
 
     @Test
     void reverse_shouldReturnReversedSameSeveralWords_whenInputSeveralWords() {
-        when(rev.reverse("Hello Word")).thenReturn("olleH droW");
-        assertEquals("olleH droW", rev.reverse("Hello Word"));
+        when(mockReverser.reverse("Hello")).thenReturn("olleH");
+        when(mockReverser.reverse("Word")).thenReturn("droW");
+        assertEquals("olleH droW", wordsReverser.reverse("Hello Word"));
     }
 }
