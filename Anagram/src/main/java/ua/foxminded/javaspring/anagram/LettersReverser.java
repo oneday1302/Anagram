@@ -4,6 +4,10 @@ public class LettersReverser implements Reverser {
 
     @Override
     public String reverse(String value) {
+        if (value == null) {
+            return null;
+        }
+
         StringBuilder reverseLetters = new StringBuilder(value.replaceAll("[^A-Za-z]+", "")).reverse();
         char[] letters = value.toCharArray();
 
