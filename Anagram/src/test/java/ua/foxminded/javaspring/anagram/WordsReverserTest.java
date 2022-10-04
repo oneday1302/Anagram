@@ -1,6 +1,7 @@
 package ua.foxminded.javaspring.anagram;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -11,8 +12,11 @@ class WordsReverserTest {
     WordsReverser wordsReverser = new WordsReverser(mockReverser);
 
     @Test
-    void reverse_shouldReturnNull_whenInputNull() {
-        assertEquals(null, wordsReverser.reverse(null));
+    void reverse_shouldReturnIllegalArgumentException_whenInputNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            wordsReverser.reverse(null);
+        });
+
     }
 
     @Test
@@ -37,24 +41,6 @@ class WordsReverserTest {
     }
 
     @Test
-    void reverse_shouldReturnSameLetter_whenInputSameLetter() {
-        when(mockReverser.reverse("aaa")).thenReturn("aaa");
-        assertEquals("aaa", wordsReverser.reverse("aaa"));
-    }
-
-    @Test
-    void reverse_shouldReturnReversedSameCharacterInLowerAndUpperCases_whenInputSameCharacterInLowerAndUpperCases() {
-        when(mockReverser.reverse("aA")).thenReturn("Aa");
-        assertEquals("Aa", wordsReverser.reverse("aA"));
-    }
-
-    @Test
-    void reverse_shouldReturnReversedDifferentLetters_whenInputDifferentLetters() {
-        when(mockReverser.reverse("abcd")).thenReturn("dcba");
-        assertEquals("dcba", wordsReverser.reverse("abcd"));
-    }
-
-    @Test
     void reverse_shouldReturnSameOnlySymbols_whenInputOnlySymbols() {
         when(mockReverser.reverse("!")).thenReturn("!");
         assertEquals("!", wordsReverser.reverse("!"));
@@ -65,5 +51,13 @@ class WordsReverserTest {
         when(mockReverser.reverse("Hello")).thenReturn("olleH");
         when(mockReverser.reverse("Word")).thenReturn("droW");
         assertEquals("olleH droW", wordsReverser.reverse("Hello Word"));
+    }
+    
+    @Test
+    void reverse_shouldReturnReversedWordsAndSameSpaces_whenInputSeveralWordsSeveralSpaces() {
+        when(mockReverser.reverse("abc")).thenReturn("cba");
+        when(mockReverser.reverse("qwe")).thenReturn("ewq");
+        when(mockReverser.reverse("as")).thenReturn("sa");
+        assertEquals("  cba   ewq   sa ", wordsReverser.reverse("  abc   qwe   as "));
     }
 }

@@ -5,7 +5,7 @@ public class LettersReverser implements Reverser {
     @Override
     public String reverse(String value) {
         if (value == null) {
-            return null;
+            throw new IllegalArgumentException("param cannot be null.");
         }
 
         StringBuilder reverseLetters = new StringBuilder(value.replaceAll("[^A-Za-z]+", "")).reverse();

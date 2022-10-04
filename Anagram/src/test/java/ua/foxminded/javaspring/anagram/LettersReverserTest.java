@@ -1,6 +1,8 @@
 package ua.foxminded.javaspring.anagram;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 class LettersReverserTest {
@@ -8,8 +10,10 @@ class LettersReverserTest {
     LettersReverser lettersReverser = new LettersReverser();
 
     @Test
-    void reverse_shouldReturnNull_whenInputNull() {
-        assertEquals(null, lettersReverser.reverse(null));
+    void reverse_shouldReturnIllegalArgumentException_whenInputNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            lettersReverser.reverse(null);
+        });
     }
 
     @Test

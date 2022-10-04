@@ -1,7 +1,6 @@
 package ua.foxminded.javaspring.anagram;
 
 import java.util.StringJoiner;
-import org.junit.platform.commons.util.StringUtils;
 
 public class WordsReverser implements Reverser {
 
@@ -14,20 +13,21 @@ public class WordsReverser implements Reverser {
     @Override
     public String reverse(String value) {
         if (value == null) {
-            return null;
+            throw new IllegalArgumentException("param cannot be null.");
         }
-
-        if (value.isEmpty()) {
-            return value;
-        }
-
-        if (StringUtils.isBlank(value)) {
-            return value;
-        }
-
-        StringJoiner outputString = new StringJoiner(" ");
+        
+        StringJoiner words = new StringJoiner("");
         for (String word : value.split(" ")) {
-            outputString.add(reverser.reverse(word));
+            if (!word.isEmpty()) {
+                words.add(reverser.reverse(word));
+            }
+        }
+        
+        StringBuilder outputString = new StringBuilder(words.toString());
+        for (int i = 0; i < value.length(); i++) {
+            if (value.charAt(i) == ' ') {
+                outputString.insert(i, value.charAt(i));
+            }
         }
         return outputString.toString();
     }
