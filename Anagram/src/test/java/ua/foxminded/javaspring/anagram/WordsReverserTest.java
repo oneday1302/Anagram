@@ -21,16 +21,19 @@ class WordsReverserTest {
 
     @Test
     void reverse_shouldReturnEmptyString_whenInputEmptyString() {
+        when(mockReverser.reverse("")).thenReturn("");
         assertEquals("", wordsReverser.reverse(""));
     }
 
     @Test
     void reverse_shouldReturnSingleSpace_whenInputSingleSpace() {
+        when(mockReverser.reverse("")).thenReturn("");
         assertEquals(" ", wordsReverser.reverse(" "));
     }
 
     @Test
     void reverse_shouldReturnSameSpaces_whenInputSeveralSpaces() {
+        when(mockReverser.reverse("")).thenReturn("");
         assertEquals("   ", wordsReverser.reverse("   "));
     }
 
@@ -58,6 +61,7 @@ class WordsReverserTest {
         when(mockReverser.reverse("abc")).thenReturn("cba");
         when(mockReverser.reverse("qwe")).thenReturn("ewq");
         when(mockReverser.reverse("as")).thenReturn("sa");
+        when(mockReverser.reverse("")).thenReturn("");
         assertEquals("  cba   ewq   sa ", wordsReverser.reverse("  abc   qwe   as "));
     }
 }

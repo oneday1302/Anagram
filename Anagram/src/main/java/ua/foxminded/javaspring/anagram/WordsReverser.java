@@ -15,19 +15,10 @@ public class WordsReverser implements Reverser {
         if (value == null) {
             throw new IllegalArgumentException("param cannot be null.");
         }
-        
-        StringJoiner words = new StringJoiner("");
-        for (String word : value.split(" ")) {
-            if (!word.isEmpty()) {
-                words.add(reverser.reverse(word));
-            }
-        }
-        
-        StringBuilder outputString = new StringBuilder(words.toString());
-        for (int i = 0; i < value.length(); i++) {
-            if (value.charAt(i) == ' ') {
-                outputString.insert(i, value.charAt(i));
-            }
+
+        StringJoiner outputString = new StringJoiner(" ");
+        for (String word : value.split(" ", -1)) {
+            outputString.add(reverser.reverse(word));
         }
         return outputString.toString();
     }
